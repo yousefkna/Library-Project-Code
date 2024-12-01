@@ -6,6 +6,78 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
+    class Books
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+
+        static List<Books> CatalogueLibrary = new List<Books>();
+        public Books(string title, string author)
+        {
+            Title = title;
+            Author = author;
+        }
+
+        public void AddBook()
+        {
+            Console.Write($"\n Enter the author of the book : ");
+            string A = Console.ReadLine();
+            Console.Write($"\n Enter the book name : ");
+            string T = Console.ReadLine();
+
+            Books bookadd = new Books(T, A);
+            Books.CatalogueLibrary.Add(bookadd);
+            Console.WriteLine($"\n The book added successfully \n Book name: {T} \n Author name: {A}");
+
+        }
+
+        public void searchbyauthor()
+        {
+            Console.Write("\n enter the author name : ");
+            string x = Console.ReadLine();
+
+            foreach (Books book in CatalogueLibrary)
+            {
+                if (x == book.Author)
+                {
+                    Console.WriteLine($"\n the book ({book.Title}) of the author ({book.Author}) is found");
+                    break;
+                }
+                else
+                    Console.WriteLine($"\n the book of the author ({x}) isn't found");
+            }
+        }
+        public void searchbyTitle()
+        {
+            Console.WriteLine("\n enter the book name : ");
+            string x = Console.ReadLine();
+
+            foreach (Books book in CatalogueLibrary)
+            {
+                if (x == book.Title)
+                {
+                    Console.WriteLine($"\n the book ({book.Title}) of the author ({book.Author}) is found");
+                    break;
+                }
+                else
+                    Console.WriteLine($"\n the book ({x}) isn't found");
+            }
+
+
+        }
+
+        public void display()
+        {
+            foreach (Books i in CatalogueLibrary)
+            {
+                Console.WriteLine($"\n Book name: {i.Title} \n The Author: {i.Author} \n \n------------------");
+            }
+
+
+        }
+
+
+    }
     internal class Program
     {
 
